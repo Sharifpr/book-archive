@@ -1,5 +1,4 @@
 searchResult = () => {
-
   const inputField = document.getElementById("input-field");
   const cardDetail = document.getElementById("card-details");
   const totalFound = document.getElementById("found");
@@ -25,7 +24,6 @@ searchResult = () => {
 
     //  book url
     const url = `https://openlibrary.org/search.json?q=${inputValue}`;
-
     fetch(url)
       .then((res) => res.json())
       .then((data) =>
@@ -52,22 +50,20 @@ displayBook = (books) => {
 
     const cardDetail = document.getElementById("card-details");
 
-    const bookMatch = books.docs.filter(item => item.cover_i !== undefined && item.publisher !== undefined && item.publisher[0] !== undefined && item.first_publish_year !== undefined);
+    const matchBook = books.docs.filter(item => item.cover_i !== undefined && item.publisher !== undefined && item.publisher[0] !== undefined && item.first_publish_year !== undefined);
 
-
-    bookMatch.forEach((book) => {
+    matchBook.forEach((book) => {
       const div = document.createElement("div");
 
       div.innerHTML = `
        <div class="col">
-           <div class="card vh-100 shadow rounded-2">
+                <div class="card vh-100 shadow rounded-2">
            <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="rounded-bottom">
                <div class="card-body">
-                   <h5 id="author" class="card-title">Book Name: ${book?.title}</h5>
+                   <h3 id="author" class="card-title">Book Name: ${book?.title}</h3>
                    <h6 class="card-text">Author:  <span class ="text-secondary"> ${book.author_name} </span></h6>
                    <h6 class="card-text">Publisher: <span class ="text-secondary"> ${book.publisher[0]} </span> </h6>
                    <h6 class="card-text">Published: <span class ="text-secondary">  ${book.first_publish_year} </span> </h6>
-
                </div>
            </div>
        </div>
