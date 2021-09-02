@@ -5,39 +5,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Archive</title>
-    <!-- bootstrap css stylesheet -->
+    <title>Book</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
 </head>
 
-<body>
+<body class="mx-5">
+    <header>
+        <h1 class="text-dark text-center my-4">Online Book Archive</h1>
 
-    <h1 class="text-center p-4">Open eBook Archive</h1>
+    </header>
 
-    <!-- search section -->
-    <div class="input-group mb-3 mx-auto w-50">
-        <input id="input-field" type="text" class="form-control" placeholder="Search your favourite book"
-            aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
-    </div>
-
-    <!-- error handing section -->
-    <div id="error-massage" class="text-center text-danger fs-2 py-3 fw-bold">
-
-    </div>
-
-
-    <!-- search result section -->
-    <div id="search-container" class="row row-cols-1 row-cols-md-3 g-4 container mx-auto p-4">
-
-
-    </div>
-
+    <main>
+        <!-- input field section  -->
+        <section>
+            <div class="container">
+                <form class="col-md-6 m-auto py-5">
+                    <div class="input-group mb-2">
+                        <input id="input-field" type="text" class="form-control"
+                            placeholder="Search Your favorite book">
+                        <div class="input-group-append">
+                            <button onclick="search()" type="button" class="btn btn-dark">Search</button>
+                        </div>
+                    </div>
+                    <p class="text-center m-3"><span class="text-secondary" id="found"></span></p>
+                </form>
+        </section>
 
 
-    <script src="./js/script.js"></script>
+        <!-- search book list  -->
+
+        <div id="card-details" class="row row-cols-1 row-cols-md-3 g-4">
+
+        </div>
+
+
+        <!-- display error message  -->
+
+        <section>
+            <div style="display:none" id="error" class="text-center d-gri">
+                <h1 class="m-3 text-center text-danger">Not Found Result!</h1>
+            </div>
+
+            <div style="display:none" id="emptyInput" class="text-center d-gri">
+                <h1 class="m-3 text-center text-danger">Please enter the name of the book...!</h1>
+            </div>
+        </section>
+
+    </main>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
