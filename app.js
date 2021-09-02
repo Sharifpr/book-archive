@@ -1,4 +1,4 @@
-search = () => {
+searchResult = () => {
 
   const inputField = document.getElementById("input-field");
   const cardDetail = document.getElementById("card-details");
@@ -12,8 +12,6 @@ search = () => {
 
   if (inputValue === "") {
 
-    // spinner("hidden");
-
     emptyInput.style.display = "block";
     error.style.display = "none";
     totalFound.innerText = "";
@@ -21,7 +19,7 @@ search = () => {
 
   }
   else {
-    // spinner("visible");
+
     emptyInput.style.display = "none";
 
     //  book url
@@ -44,7 +42,7 @@ displayBook = (books) => {
   if (books.numFound === 0) {
     totalFound.innerText = "";
     error.style.display = "block";
-    // spinner("hidden");
+
   }
   else {
     error.style.display = "none";
@@ -54,17 +52,15 @@ displayBook = (books) => {
     books?.docs.forEach((book) => {
       const div = document.createElement("div");
 
-      //    condition 
+      //  some condition 
       book?.cover_i ? (imgUrl = `https://covers.openlibrary.org/b/id/${book?.cover_i}-M.jpg`) : (imgUrl = "images/error.png");
       book?.author_name ? (author = book?.author_name.join()) : (author = "not available");
       book?.publisher[0] ? (publisher = book?.publisher[0]) : (publisher = "not available");
       book?.publish_date[0] ? (publishDate = book?.publish_date[0]) : (publishDate = "not available");
 
-      // console.log(book?.title);
-
       div.innerHTML = `
        <div class="col">
-           <div class="card h-100 shadow">
+           <div class="card h-100 shadow rounded-2">
                 <img height='450px'  src=${imgUrl}  class="card-img-top" alt="...">
                <div class="card-body">
                    <h5 id="author" class="card-title">Book Name: ${book?.title}</h5>
@@ -77,7 +73,7 @@ displayBook = (books) => {
        </div>
        `;
       cardDetail.appendChild(div);
-      // spinner("hidden");
+
     });
   }
 };

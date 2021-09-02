@@ -13,7 +13,7 @@
 
 <body class="mx-5">
     <header>
-        <h1 class="text-dark text-center my-4">Online Book Archive</h1>
+        <h1 class="text-dark text-center my-4">A storehouse of knowledge</h1>
 
     </header>
 
@@ -21,20 +21,22 @@
         <!-- input field section  -->
         <section>
             <div class="container">
-                <form class="col-md-6 m-auto py-5">
+                <form class="col-md-6 m-auto m-3">
                     <div class="input-group mb-2">
                         <input id="input-field" type="text" class="form-control"
                             placeholder="Search Your favorite book">
                         <div class="input-group-append">
-                            <button onclick="search()" type="button" class="btn btn-dark">Search</button>
+                            <button onclick="searchResult()" type="button" class="btn btn-dark">Search</button>
                         </div>
                     </div>
+
+                    <!-- total tesult -->
                     <p class="text-center m-3"><span class="text-secondary" id="found"></span></p>
                 </form>
         </section>
 
 
-        <!-- search book list  -->
+        <!-- search book result  -->
 
         <div id="card-details" class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -44,12 +46,12 @@
         <!-- display error message  -->
 
         <section>
-            <div style="display:none" id="error" class="text-center d-gri">
-                <h1 class="m-3 text-center text-danger">Not Found Result!</h1>
+            <div style="display:none" id="error" class="text-center d-gri py-3">
+                <h4 class="m-3 text-center text-danger">Not Found Result!</h4>
             </div>
 
-            <div style="display:none" id="emptyInput" class="text-center d-gri">
-                <h1 class="m-3 text-center text-danger">Please enter the name of the book...!</h1>
+            <div style="display:none" id="emptyInput" class="text-center d-gri py-4">
+                <h5 class="m-3 text-center text-danger">Please enter the name of the book...!</h5>
             </div>
         </section>
 
