@@ -10,6 +10,7 @@ searchResult = () => {
   cardDetail.textContent = "";
   totalFound.innerText = "";
 
+  /*  clear & set field */
   if (inputValue === "") {
 
     emptyInput.style.display = "block";
@@ -33,10 +34,12 @@ searchResult = () => {
   inputField.value = "";
 };
 
+/* display book details & show results */
 displayBook = (books) => {
   const totalFound = document.getElementById("found");
   totalFound.innerText = `The total results: ${books.numFound}`;
 
+  // error handling
   const error = document.getElementById("error");
 
   if (books.numFound === 0) {
@@ -49,24 +52,21 @@ displayBook = (books) => {
 
     const cardDetail = document.getElementById("card-details");
 
-    books?.docs.forEach((book) => {
-      const div = document.createElement("div");
+    const bookMatch = books.docs.filter(item => item.cover_i !== undefined && item.publisher !== undefined && item.publisher[0] !== undefined && item.first_publish_year !== undefined);
 
-      //  some condition 
-      book?.cover_i ? (imgUrl = `https://covers.openlibrary.org/b/id/${book?.cover_i}-M.jpg`) : (imgUrl = "images/error.png");
-      book?.author_name ? (author = book?.author_name.join()) : (author = "not available");
-      book?.publisher[0] ? (publisher = book?.publisher[0]) : (publisher = "not available");
-      book?.publish_date[0] ? (publishDate = book?.publish_date[0]) : (publishDate = "not available");
+
+    bookMatch.forEach((book) => {
+      const div = document.createElement("div");
 
       div.innerHTML = `
        <div class="col">
            <div class="card vh-100 shadow rounded-2">
-                <img height='450px'  src=${imgUrl}  class="card-img-top" alt="...">
+           <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="rounded-bottom">
                <div class="card-body">
                    <h5 id="author" class="card-title">Book Name: ${book?.title}</h5>
-                   <h6 class="card-text">Author:  <span class ="text-secondary"> ${author} </span></h6>
-                   <h6 class="card-text">Publisher: <span class ="text-secondary"> ${publisher} </span> </h6>
-                   <h6 class="card-text">Published: <span class ="text-secondary">  ${publishDate} </span> </h6>
+                   <h6 class="card-text">Author:  <span class ="text-secondary"> ${book.author_name} </span></h6>
+                   <h6 class="card-text">Publisher: <span class ="text-secondary"> ${book.publisher[0]} </span> </h6>
+                   <h6 class="card-text">Published: <span class ="text-secondary">  ${book.first_publish_year} </span> </h6>
 
                </div>
            </div>
