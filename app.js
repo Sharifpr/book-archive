@@ -60,7 +60,7 @@ displayBook = (books) => {
 
       div.innerHTML = `
        <div class="col">
-           <div class="card h-100 shadow rounded-2">
+           <div class="card vh-100 shadow rounded-2">
                 <img height='450px'  src=${imgUrl}  class="card-img-top" alt="...">
                <div class="card-body">
                    <h5 id="author" class="card-title">Book Name: ${book?.title}</h5>
